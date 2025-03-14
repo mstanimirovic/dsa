@@ -7,24 +7,20 @@ def test_insertion_sort():
     insertion_sort(arr)
     assert arr == [-1, 0, 2, 3, 4, 7, 8]
 
-
 def test_insertion_sort_empty():
     arr = []
     insertion_sort(arr)
     assert arr == []
-
 
 def test_insertion_sort_single_element():
     arr = [1]
     insertion_sort(arr)
     assert arr == [1]
 
-
 def test_insertion_sort_sorted():
     arr = [-1, 0, 2, 5, 6]
     insertion_sort(arr)
     assert arr == [-1, 0, 2, 5, 6]
-
 
 def test_insertion_sort_descending():
     arr = [3, 2, 1]

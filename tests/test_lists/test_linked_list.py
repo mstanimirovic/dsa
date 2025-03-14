@@ -55,3 +55,36 @@ def test_linked_list_pop_front_empty():
 def test_linked_list_pop_back_empty():
     linked_list = LinkedList()
     assert linked_list.pop_back() is None
+
+def test_linked_list_iterator():
+    linked_list = LinkedList()
+    linked_list.push_back(1)
+    linked_list.push_back(2)
+    linked_list.push_back(3)
+    iterator = iter(linked_list)
+    assert next(iterator) == 1
+    assert next(iterator) == 2
+    assert next(iterator) == 3
+    assert next(iterator, None) is None
+
+def test_linked_list_iterator_empty():
+    linked_list = LinkedList()
+    iterator = iter(linked_list)
+    assert next(iterator, None) is None
+
+def test_linked_list_length():
+    linked_list = LinkedList()
+    linked_list.push_back(1)
+    linked_list.push_back(2)
+    linked_list.push_back(3)
+    assert linked_list.length == 3
+    linked_list.pop_back()
+    assert linked_list.length == 2
+    linked_list.pop_front()
+    assert linked_list.length == 1
+    linked_list.pop_front()
+    assert linked_list.length == 0
+
+def test_linked_list_length_empty():
+    linked_list = LinkedList()
+    assert linked_list.length == 0

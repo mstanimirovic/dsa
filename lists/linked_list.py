@@ -27,9 +27,13 @@ class LinkedList:
     def __init__(self, head=None, tail=None):
         self.head: Optional[Node] = head
         self.tail: Optional[Node] = tail
+        self.length = 0
 
     def __iter__(self):
         return LinkedListIterator(self.head)
+
+    def __len__(self):
+        return self.length
 
     def push_back(self, value):
         new_node = Node(value)
@@ -39,15 +43,16 @@ class LinkedList:
         else:
             self.tail.next = new_node
             self.tail = new_node
+        self.length += 1
 
     def pop_back(self):
+        value = None
         if self.head is None:
             return None
         elif self.head == self.tail:
             value = self.head.value
             self.head = None
             self.tail = None
-            return value
         else:
             current = self.head
             while current.next != self.tail:
@@ -55,7 +60,9 @@ class LinkedList:
             value = self.tail.value
             self.tail = current
             self.tail.next = None
-            return value
+
+        self.length -= 1
+        return value
 
     def push_front(self, value):
         new_node = Node(value)
@@ -65,19 +72,21 @@ class LinkedList:
         else:
             new_node.next = self.head
             self.head = new_node
+        self.length += 1
 
     def pop_front(self):
+        value = None
         if self.head is None:
             return None
         elif self.head == self.tail:
             value = self.head.value
             self.head = None
             self.tail = None
-            return value
         else:
             value = self.head.value
             self.head = self.head.next
-            return value
+        self.length -= 1
+        return value
 
 
 if __name__ == "__main__":

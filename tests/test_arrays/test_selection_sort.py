@@ -7,24 +7,20 @@ def test_selection_sort():
     selection_sort(arr)
     assert arr == [-1, 0, 2, 3, 4, 7, 8]
 
-
 def test_selection_sort_empty():
     arr = []
     selection_sort(arr)
     assert arr == []
-
 
 def test_selection_sort_single_element():
     arr = [5]
     selection_sort(arr)
     assert arr == [5]
 
-
 def test_selection_sort_sorted():
     arr = [-1, 0, 2, 3, 4, 7, 8]
     selection_sort(arr)
     assert arr == [-1, 0, 2, 3, 4, 7, 8]
-
 
 def test_selection_sort_descending():
     arr = [-1, 0, 2, 3, 4, 7, 8]
