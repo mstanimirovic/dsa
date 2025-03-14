@@ -10,7 +10,7 @@ def selection_sort(arr, order = lambda x, y: x > y):
     Returns:
         None: The function sorts the array in-place.
     """
-    n = len(arr);
+    n = len(arr)
     for i in range(n):
         key_index = i
         for j in range(i + 1, n):
