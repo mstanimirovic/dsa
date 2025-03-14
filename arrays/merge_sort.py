@@ -1,7 +1,4 @@
 
-from .utils import generate_random_array, display_array
-
-
 def merge_sort(arr, order = lambda x, y: x > y):
     """
     Merge Sort Algorithm
@@ -42,8 +39,10 @@ def merge(left, right, order = lambda x, y: x > y):
 
 
 if __name__ == "__main__":
+    from utils import generate_random_array, display_array
+
     arr = generate_random_array()
     display_array(arr, "[ORIGINAL] = ")
 
-    sorted_arr = merge_sort(arr, lambda x, y: x < y)
+    sorted_arr = merge_sort(arr, lambda x, y: x > y)
     display_array(sorted_arr, "[SORTED] = ")

@@ -1,7 +1,4 @@
 
-from .utils import generate_random_array, display_array
-
-
 def insertion_sort(arr, order = lambda x, y: x > y):
     """
     Insertion Sort Algorithm
@@ -23,6 +20,8 @@ def insertion_sort(arr, order = lambda x, y: x > y):
         arr[j + 1] = key
 
 if __name__ == "__main__":
+    from utils import generate_random_array, display_array
+
     arr = generate_random_array(10, 1, 100)
     display_array(arr, "[ORIGINAL] = ")
 

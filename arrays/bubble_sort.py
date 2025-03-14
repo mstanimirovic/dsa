@@ -1,7 +1,4 @@
 
-from .utils import generate_random_array, display_array
-
-
 def bubble_sort(arr, order = lambda x, y: x > y):
     """
     Bubble Sort Algorithm
@@ -21,7 +18,10 @@ def bubble_sort(arr, order = lambda x, y: x > y):
 
 
 if __name__ == "__main__":
+    from utils import generate_random_array, display_array
+
     arr = generate_random_array(10, 1, 100)
     display_array(arr, "[ORIGINAL] = ")
+
     bubble_sort(arr, lambda x, y: x > y)
     display_array(arr, "[SORTED] = ")

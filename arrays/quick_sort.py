@@ -1,7 +1,4 @@
 
-from .utils import generate_random_array, display_array
-
-
 def quick_sort(arr):
     """
     Quick Sort Algorithm
@@ -35,6 +32,8 @@ def quick_sort(arr):
 
 
 if __name__ == "__main__":
+    from utils import generate_random_array, display_array
+
     arr = generate_random_array()
     display_array(arr, "[ORIGINAL] = ")
 

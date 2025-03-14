@@ -1,7 +1,4 @@
 
-from .utils import generate_random_array, display_array
-
-
 def selection_sort(arr, order = lambda x, y: x > y):
     """
     Selection Sort Algorithm
@@ -23,6 +20,8 @@ def selection_sort(arr, order = lambda x, y: x > y):
 
 
 if __name__ == "__main__":
+    from utils import generate_random_array, display_array
+
     arr = generate_random_array(10, 1, 100)
     display_array(arr, "[ORIGINAL] = ")
 
