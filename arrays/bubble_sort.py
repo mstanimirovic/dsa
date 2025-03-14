@@ -1,5 +1,5 @@
 
-from utils import generate_random_array, display_array
+from .utils import generate_random_array, display_array
 
 
 def bubble_sort(arr, order = lambda x, y: x > y):

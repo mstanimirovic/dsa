@@ -1,5 +1,5 @@
 
-from utils import generate_random_array, display_array
+from .utils import generate_random_array, display_array
 
 
 def quick_sort(arr):
