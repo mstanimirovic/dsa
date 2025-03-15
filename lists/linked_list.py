@@ -38,18 +38,20 @@ class LinkedList:
         if type(key) is not int:
             return
         elif key >= self.length:
-            raise IndexError
+            raise IndexError("getitem index out of range")
         elif key < 0:
             if abs(key) > self.length:
-                raise IndexError
+                raise IndexError("getitem index out of range")
             key = self.length + key
 
-        index = 0
-        current = self.head
-        while index != key:
-            current = current.next
-            index += 1
+        if key == 0:
+            return self.head.value
+        elif key == self.length - 1:
+            return self.tail.value
 
+        current = self.head
+        for _ in range(key):
+            current = current.next
         return current.value
 
     def __contains__(self, value):
@@ -113,6 +115,32 @@ class LinkedList:
         self.length -= 1
         return value
 
+    def pop(self, index=-1):
+        if self.is_empty():
+            raise IndexError("pop from empty linked list")
+        elif index >= self.length:
+            raise IndexError("pop index out of range")
+        elif index < 0:
+            if abs(index) > self.length:
+                raise IndexError("pop index out of range")
+            index = self.length + index
+
+        if index == 0:
+            return self.pop_front()
+        elif index == self.length - 1:
+            return self.pop_back()
+
+        current = self.head
+        for _ in range(index - 1):
+            current = current.next
+        value = current.next.value
+        current.next = current.next.next
+        self.length -= 1
+        return value
+
+    def is_empty(self):
+        return self.head is None
+
 
 if __name__ == "__main__":
     linked_list = LinkedList()
@@ -120,5 +148,9 @@ if __name__ == "__main__":
     linked_list.push_back(2)
     linked_list.push_back(3)
 
+    for i in range(-len(linked_list), 0):
+        print(linked_list[i])
+
+    linked_list.pop()
     for i in range(-len(linked_list), 0):
         print(linked_list[i])

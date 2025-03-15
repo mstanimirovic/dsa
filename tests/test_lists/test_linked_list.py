@@ -135,3 +135,19 @@ def test_linked_list_getitem_empty():
     with pytest.raises(IndexError):
         linked_list = LinkedList()
         linked_list[0]
+
+
+def test_linked_list_pop():
+    linked_list = LinkedList()
+    linked_list.push_back(1)
+    linked_list.push_back(2)
+    linked_list.push_back(3)
+    assert linked_list.pop() == 3
+    assert linked_list.pop() == 2
+    assert linked_list.pop() == 1
+
+
+def test_linked_list_pop_empty():
+    with pytest.raises(IndexError):
+        linked_list = LinkedList()
+        linked_list.pop(1)
