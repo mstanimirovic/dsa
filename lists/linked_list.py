@@ -138,8 +138,55 @@ class LinkedList:
         self.length -= 1
         return value
 
+    def remove(self, value):
+        if self.is_empty():
+            raise ValueError("remove from empty linked list")
+        elif self.head.value == value:
+            return self.pop_front()
+        elif self.tail.value == value:
+            return self.pop_back()
+
+        current = self.head
+        while current.next is not None:
+            if current.next.value == value:
+                current.next = current.next.next
+                self.length -= 1
+                return value
+            current = current.next
+        raise ValueError("value not found in linked list")
+
+    def insert(self, index, value):
+        if index < 0:
+            index = self.length + index
+
+        if index == 0:
+            self.push_front(value)
+            return
+        elif index >= self.length:
+            self.push_back(value)
+            return
+
+        current = self.head
+        for _ in range(index - 1):
+            current = current.next
+        new_node = Node(value)
+        new_node.next = current.next
+        current.next = new_node
+        self.length += 1
+
     def is_empty(self):
         return self.head is None
+
+    def __str__(self):
+        if self.is_empty():
+            return "[]"
+        current = self.head
+        result = "["
+        while current.next is not None:
+            result += str(current.value) + ", "
+            current = current.next
+        result += str(current.value) + "]"
+        return result
 
 
 if __name__ == "__main__":
@@ -148,9 +195,4 @@ if __name__ == "__main__":
     linked_list.push_back(2)
     linked_list.push_back(3)
 
-    for i in range(-len(linked_list), 0):
-        print(linked_list[i])
-
-    linked_list.pop()
-    for i in range(-len(linked_list), 0):
-        print(linked_list[i])
+    print(linked_list)

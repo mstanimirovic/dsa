@@ -151,3 +151,82 @@ def test_linked_list_pop_empty():
     with pytest.raises(IndexError):
         linked_list = LinkedList()
         linked_list.pop(1)
+
+
+def test_linked_list_remove():
+    linked_list = LinkedList()
+    linked_list.push_back(1)
+    linked_list.push_back(2)
+    linked_list.push_back(3)
+    linked_list.remove(2)
+    assert linked_list.length == 2
+    assert linked_list[0] == 1
+    assert linked_list[1] == 3
+    linked_list.remove(1)
+    assert linked_list.length == 1
+    assert linked_list[0] == 3
+    linked_list.remove(3)
+    assert linked_list.length == 0
+
+
+def test_linked_list_remove_empty():
+    with pytest.raises(ValueError):
+        linked_list = LinkedList()
+        linked_list.remove(1)
+
+
+def test_linked_list_remove_not_found():
+    with pytest.raises(ValueError):
+        linked_list = LinkedList()
+        linked_list.push_back(1)
+        linked_list.push_back(2)
+        linked_list.push_back(3)
+        linked_list.remove(4)
+
+
+def test_linked_list_insert():
+    linked_list = LinkedList()
+    linked_list.push_back(1)
+    linked_list.push_back(2)
+    linked_list.push_back(3)
+    linked_list.insert(1, 4)
+    assert linked_list.length == 4
+    assert linked_list[0] == 1
+    assert linked_list[1] == 4
+    assert linked_list[2] == 2
+    assert linked_list[3] == 3
+    linked_list.insert(0, 5)
+    assert linked_list.length == 5
+    assert linked_list[0] == 5
+    assert linked_list[1] == 1
+    assert linked_list[2] == 4
+    assert linked_list[3] == 2
+    assert linked_list[4] == 3
+    linked_list.insert(5, 6)
+    assert linked_list.length == 6
+    assert linked_list[0] == 5
+    assert linked_list[1] == 1
+    assert linked_list[2] == 4
+    assert linked_list[3] == 2
+    assert linked_list[4] == 3
+    assert linked_list[5] == 6
+
+
+def test_linked_list_insert_empty():
+    linked_list = LinkedList()
+    linked_list.insert(1, 2)
+    assert linked_list.length == 1
+    assert linked_list[0] == 2
+
+
+def test_linked_list_insert_out_of_range():
+    linked_list = LinkedList()
+    linked_list.push_back(1)
+    linked_list.push_back(2)
+    linked_list.push_back(3)
+    linked_list.insert(-1, 4)
+    assert linked_list.length == 4
+    assert linked_list[0] == 1
+    assert linked_list[1] == 2
+    assert linked_list[2] == 4
+    assert linked_list[3] == 3
