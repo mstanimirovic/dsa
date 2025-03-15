@@ -1,4 +1,3 @@
-
 from typing import Optional
 
 
@@ -34,6 +33,32 @@ class LinkedList:
 
     def __len__(self):
         return self.length
+
+    def __getitem__(self, key):
+        if type(key) is not int:
+            return
+        elif key >= self.length:
+            raise IndexError
+        elif key < 0:
+            if abs(key) > self.length:
+                raise IndexError
+            key = self.length + key
+
+        index = 0
+        current = self.head
+        while index != key:
+            current = current.next
+            index += 1
+
+        return current.value
+
+    def __contains__(self, value):
+        current = self.head
+        while current:
+            if current.value == value:
+                return True
+            current = current.next
+        return False
 
     def push_back(self, value):
         new_node = Node(value)
@@ -94,12 +119,6 @@ if __name__ == "__main__":
     linked_list.push_back(1)
     linked_list.push_back(2)
     linked_list.push_back(3)
-    # print(linked_list.pop_back())  # Output: 3
-    # print(linked_list.pop_back())  # Output: 2
-    # print(linked_list.pop_back())  # Output: 1
-    # print(linked_list.pop_front()) # Output: None
-    for value in linked_list:
-        print(value)
-    linked_list.pop_front()
-    for value in linked_list:
-        print(value)
+
+    for i in range(-len(linked_list), 0):
+        print(linked_list[i])
