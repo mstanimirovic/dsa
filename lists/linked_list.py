@@ -143,13 +143,15 @@ class LinkedList:
             raise ValueError("remove from empty linked list")
         elif self.head.value == value:
             return self.pop_front()
-        elif self.tail.value == value:
-            return self.pop_back()
+        # elif self.tail.value == value:
+        #     return self.pop_back()
 
         current = self.head
         while current.next is not None:
             if current.next.value == value:
                 current.next = current.next.next
+                if current.next is None:
+                    self.tail = current
                 self.length -= 1
                 return value
             current = current.next
@@ -188,6 +190,11 @@ class LinkedList:
         result += str(current.value) + "]"
         return result
 
+    def clear(self):
+        self.head = None
+        self.tail = None
+        self.length = 0
+
 
 if __name__ == "__main__":
     linked_list = LinkedList()
@@ -195,4 +202,7 @@ if __name__ == "__main__":
     linked_list.push_back(2)
     linked_list.push_back(3)
 
+    # linked_list.remove(3)
+    # linked_list.remove(2)
+    linked_list.remove(1)
     print(linked_list)

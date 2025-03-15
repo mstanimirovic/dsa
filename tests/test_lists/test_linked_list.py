@@ -169,6 +169,48 @@ def test_linked_list_remove():
     assert linked_list.length == 0
 
 
+def test_linked_list_remove_duplicates():
+    linked_list = LinkedList()
+    linked_list.push_back(0)
+    linked_list.push_back(1)
+    linked_list.push_back(2)
+    linked_list.push_back(3)
+    linked_list.push_back(2)
+    linked_list.push_back(1)
+    linked_list.remove(2)
+    assert linked_list.length == 5
+    assert linked_list[0] == 0
+    assert linked_list[1] == 1
+    assert linked_list[2] == 3
+    assert linked_list[3] == 2
+    assert linked_list[4] == 1
+    assert linked_list.tail.value == 1
+    linked_list.remove(1)
+    assert linked_list.length == 4
+    assert linked_list[0] == 0
+    assert linked_list[1] == 3
+    assert linked_list[2] == 2
+    assert linked_list[3] == 1
+    assert linked_list.tail.value == 1
+    linked_list.remove(3)
+    assert linked_list.length == 3
+    assert linked_list[0] == 0
+    assert linked_list[1] == 2
+    assert linked_list[2] == 1
+    linked_list.remove(1)
+    assert linked_list.length == 2
+    assert linked_list[0] == 0
+    assert linked_list[1] == 2
+    assert linked_list.tail.value == 2
+    linked_list.remove(2)
+    assert linked_list.length == 1
+    assert linked_list[0] == 0
+    assert linked_list.tail.value == 0
+    linked_list.remove(0)
+    assert linked_list.length == 0
+    assert linked_list.tail is None
+
+
 def test_linked_list_remove_empty():
     with pytest.raises(ValueError):
         linked_list = LinkedList()
@@ -230,3 +272,33 @@ def test_linked_list_insert_out_of_range():
     assert linked_list[1] == 2
     assert linked_list[2] == 4
     assert linked_list[3] == 3
+
+
+def test_linked_list_clear():
+    linked_list = LinkedList()
+    linked_list.push_back(1)
+    linked_list.push_back(2)
+    linked_list.push_back(3)
+    linked_list.clear()
+    assert linked_list.length == 0
+    assert linked_list.head is None
+    assert linked_list.tail is None
+
+
+def test_linked_list_str():
+    linked_list = LinkedList()
+    linked_list.push_back(1)
+    linked_list.push_back(2)
+    linked_list.push_back(3)
+    assert str(linked_list) == "[1, 2, 3]"
+
+
+def test_linked_list_str_empty():
+    linked_list = LinkedList()
+    assert str(linked_list) == "[]"
+
+
+def test_linked_list_str_single():
+    linked_list = LinkedList()
+    linked_list.push_back(1)
+    assert str(linked_list) == "[1]"
