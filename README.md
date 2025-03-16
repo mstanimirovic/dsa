@@ -18,5 +18,5 @@ This repository contains implementations of **Data Structures** and **Sorting Al
 - [x] Linked List
 - [ ] Stack
 - [ ] Queue
-- [ ] Binary Tree
+- [x] Binary Tree
 - [ ] Graph
